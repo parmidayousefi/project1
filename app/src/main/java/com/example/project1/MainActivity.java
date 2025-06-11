@@ -26,17 +26,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selected = null;
-                switch (item.getItemId()) {
-                    case R.id.nav_todo:
-                        selected = new ToDoFragment();
-                        break;
-                    case R.id.nav_upload:
-                        selected = new UploadFragment();
-                        break;
-                    case R.id.nav_profile:
-                        selected = new ProfileFragment();
-                        break;
-                }
+              bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment selected = null;
+
+        int id = item.getItemId();
+
+        if (id == R.id.nav_todo) {
+            selected = new ToDoFragment();
+        } else if (id == R.id.nav_upload) {
+            selected = new UploadFragment();
+        } else if (id == R.id.nav_profile) {
+            selected = new ProfileFragment();
+        }
+
+        if (selected != null) {
+            getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, selected)
+                .commit();
+            return true;
+        }
+
+        return false;
+    }
+});
+
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, selected).commit();
                 return true;
