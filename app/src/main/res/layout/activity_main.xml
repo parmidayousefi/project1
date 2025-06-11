@@ -19,3 +19,13 @@ app:menu="@menu/bottom_nav_menu"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>
+<application
+    ... >
+    <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
+
