@@ -1,3 +1,8 @@
+dependencies {
+    classpath("com.google.gms:google-services:4.3.15") // آخرین نسخه
+}
+
+
 plugins {
     alias(libs.plugins.android.application)
 }
