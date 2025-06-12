@@ -5,6 +5,8 @@ dependencies {
 
 plugins {
     alias(libs.plugins.android.application)
+id("com.google.gms.google-services")
+
 }
 
 android {
@@ -37,6 +39,9 @@ android {
 }
 
 dependencies {
+implementation("com.google.firebase:firebase-auth:22.3.0")
+implementation("com.google.android.gms:play-services-auth:21.0.0")
+
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -46,3 +51,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+apply(plugin = "com.google.gms.google-services")
+
