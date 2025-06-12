@@ -32,10 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        // Configure Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id)) // defined in strings.xml
                 .requestEmail()
@@ -43,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        // Set up sign-in button
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(view -> signIn());
     }
@@ -76,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(MainActivity.this, "Welcome, " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                        // TODO: انتقال به صفحه اصلی یا Fragment اصلی پروژه
                     } else {
                         Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }
